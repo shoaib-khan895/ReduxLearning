@@ -1,53 +1,46 @@
 import React, {useState} from 'react';
-import {Button, DatePickerIOSComponent, Text, View} from 'react-native';
-import {createStore} from 'redux';
-import {Provider, useDispatch, useSelector} from 'react-redux';
-import {store} from './redux/src/Store';
+import {Button, FlatList, Text, TextInput, View} from 'react-native';
+import {useDispatch} from 'react-redux';
 import {
   counterReset,
   counterDecrement,
   counterIncrement,
 } from './redux/src/Action';
+import {store} from '.';
 
 const App = () => {
-  const dataCounter = useSelector(state => state.counter);
-  const dataMyName = useSelector(state => state.myName);
-  const dispatch = useDispatch();
-  // const myName = initialState.myName;
-  // // const data = useSelector((state)=>state.counter
+  const dispatch = useDispatch;
+  const [val, setVal] = useState();
 
-  // // console.log('intial state', store.getState());
+  // console.log('intial state', store.getState());
+  
+  console.log('state=====>', val);
 
-  // // const unsubscribe = store.subscribe(() =>
-  // //   console.log('updated state', store.getState()),
-  // // );
-  // // store.dispatch(counterIncrement());
-  // // store.dispatch(counterIncrement());
-  // // store.dispatch(counterIncrement());
-  //  const unsubscribe = store.subscribe(() => setValue(store.getState()));
-  //  console.log(value)
-  //  unsubscribe();
+  store.subscribe(() => setVal(store.getState()));
 
   return (
-    <Provider store={store}>
-      <View>
-        <View style={{padding: 10}}></View>
-        <Button title="+" onPress={() => dispatch(counterIncrement())}></Button>
-        <View style={{padding: 10}}></View>
-        <Button title="-" onPress={() => dispatch(counterDecrement())}></Button>
-        <View style={{padding: 10}}></View>
-        <Button title="reset" onPress={() => dispatch(counterReset())}></Button>
-        <View style={{padding: 10}}></View>
-        <Text>{dataMyName}</Text>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'center',
-          }}>
-          <Text style={{fontSize: 28}}>{dataCounter}</Text>
-        </View>
+    <View>
+      <View style={{padding: 10}}></View>
+      <Button
+        title="+"
+        onPress={() => store.dispatch(counterIncrement())}></Button>
+      <View style={{padding: 10}}></View>
+      <Button
+        title="-"
+        onPress={() => store.dispatch(counterDecrement())}></Button>
+      <View style={{padding: 10}}></View>
+      <Button
+        title="reset"
+        onPress={() => store.dispatch(counterReset())}></Button>
+      <View style={{padding: 10}}></View>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'center',
+        }}>
+        {/* <Text style={{fontSize: 28}}>{0}</Text> */}
       </View>
-    </Provider>
+    </View>
   );
 };
 
