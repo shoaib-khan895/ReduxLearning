@@ -7,6 +7,8 @@ import {
   counterIncrement,
 } from './redux/src/Action';
 import {store} from '.';
+import TodoApp from './TODO/TodoApp';
+import TodoAppNew from './TODO/TodoAppNew'
 
 const App = () => {
   const dispatch = useDispatch;
@@ -16,31 +18,32 @@ const App = () => {
   
   console.log('state=====>', val);
 
-  store.subscribe(() => setVal(store.getState()));
+   store.subscribe(() => setVal(store.getState()));
 
   return (
-    <View>
-      <View style={{padding: 10}}></View>
-      <Button
-        title="+"
-        onPress={() => store.dispatch(counterIncrement())}></Button>
-      <View style={{padding: 10}}></View>
-      <Button
-        title="-"
-        onPress={() => store.dispatch(counterDecrement())}></Button>
-      <View style={{padding: 10}}></View>
-      <Button
-        title="reset"
-        onPress={() => store.dispatch(counterReset())}></Button>
-      <View style={{padding: 10}}></View>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'center',
-        }}>
-        {/* <Text style={{fontSize: 28}}>{0}</Text> */}
-      </View>
-    </View>
+    <TodoAppNew/>
+    // <View>
+    //   <View style={{padding: 10}}></View>
+    //   <Button
+    //     title="+"
+    //     onPress={() => store.dispatch(counterIncrement())}></Button>
+    //   <View style={{padding: 10}}></View>
+    //   <Button
+    //     title="-"
+    //     onPress={() => store.dispatch(counterDecrement())}></Button>
+    //   <View style={{padding: 10}}></View>
+    //   <Button
+    //     title="reset"
+    //     onPress={() => store.dispatch(counterReset())}></Button>
+    //   <View style={{padding: 10}}></View>
+    //   <View
+    //     style={{
+    //       flexDirection: 'row',
+    //       justifyContent: 'center',
+    //     }}>
+    //     <Text style={{fontSize: 28}}>{0}</Text>
+    //   </View>
+    // </View>
   );
 };
 
