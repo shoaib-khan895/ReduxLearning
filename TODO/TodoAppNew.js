@@ -10,6 +10,8 @@ import {
   StatusBar,
   SwipeView,
 } from 'react-native';
+import {store} from '.';
+import { addTask } from './redux/src/Action';
 
 function TodoApp() {
   const [task, setTask] = useState();
@@ -28,6 +30,8 @@ function TodoApp() {
     let itemsCopy = [...taskItems];
     itemsCopy.splice(index, 1);
     SetTaskItems(itemsCopy);
+
+    // () => store.dispatch(addTask(itemsCopy));
   };
 
   const Item = ({title}) => (

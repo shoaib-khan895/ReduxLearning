@@ -7,18 +7,17 @@ import {
   counterIncrement,
 } from './redux/src/Action';
 import {store} from '.';
-import TodoApp from './TODO/TodoApp';
 import TodoAppNew from './TODO/TodoAppNew'
 
 const App = () => {
-  const dispatch = useDispatch;
-  const [val, setVal] = useState();
+  // const dispatch = useDispatch;
+  // const [val, setVal] = useState();
 
-  // console.log('intial state', store.getState());
+  // // console.log('intial state', store.getState());
   
-  console.log('state=====>', val);
+  // console.log('state=====>', val);
 
-   store.subscribe(() => setVal(store.getState()));
+  //  store.subscribe(() => setVal(store.getState()));
 
   return (
     <TodoAppNew/>
